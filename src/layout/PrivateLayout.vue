@@ -3,8 +3,11 @@
 
   <v-app>
     <v-app-bar app color="#B91432">
+      <v-app-bar-nav-icon
+        @click.stop="drawer = !drawer"
+        color="white"
+      ></v-app-bar-nav-icon>
       <div class="d-flex align-center">
-        <v-icon color="white">mdi-menu</v-icon>
         <LabelComponent
           label="SAI-BOARD"
           class="ml-2"
@@ -33,7 +36,7 @@
       </v-menu>
     </v-app-bar>
 
-    <v-navigation-drawer app color="#A19E9E">
+    <v-navigation-drawer v-model="drawer" app color="#A19E9E">
       <v-layout column align-center>
         <v-flex class="mt-5">
           <v-avatar size="100">
@@ -64,7 +67,7 @@
             :key="i"
             link
           >
-            <div @click="redirect(routeName)" class="d-flex">
+            <div @click="redirect(routeName)" class="d-flex menu">
               <v-list-item-title
                 v-text="title"
                 class="white--text"
@@ -98,10 +101,11 @@ export default {
   },
   components: { LabelComponent },
   data: () => ({
+    drawer: true,
     edom: [
-      ["EDoM", "mdi-account-multiple-outline", "edom"],
-      ["EDPoM", "mdi-cog-outline", "edpom"],
-      ["EDWoM", "mdi-cog-outline", "edwom"],
+      ["EDoM", "mdi-file-chart", "edom"],
+      ["EDPoM", "mdi-file", "edpom"],
+      ["EDWoM", "mdi-file-document", "edwom"],
     ],
     kepuasan: [
       ["Create", "mdi-plus-outline"],
@@ -124,5 +128,8 @@ export default {
 <style>
 .text-title {
   position: relative;
+}
+.menu {
+  margin-left: 35px;
 }
 </style>

@@ -2,14 +2,13 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Dashboard from "@/pages/HomePage.vue";
 import EdomPage from "@/pages/EdomPage.vue";
-// import Projects from "../views/Projects.vue";
-// import Team from "../views/Team.vue";
+// import LoginPage from "@/pages/Login.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
+    path: "/home",
     name: "HomePage",
     component: Dashboard,
   },
