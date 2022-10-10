@@ -3,7 +3,7 @@
     <v-flex sm6 xs12 md6 lg4>
       <v-card class="ma-5" width="300" height="80" color="#E3E3E3">
         <v-card-text class="text-center pa-2">
-          <div class="text-h6 card-text">JUMLAH SURVEI</div>
+          <div class="text-h7 card-text">JUMLAH SURVEI</div>
           <p class="text-h5 text--primary">2.500</p>
         </v-card-text>
       </v-card>
@@ -11,7 +11,7 @@
     <v-flex sm6 xs12 md6 lg4>
       <v-card class="ma-5" width="300" height="80" color="#E3E3E3">
         <v-card-text class="text-center pa-2">
-          <div class="text-h6">JUMLAH KATEGORI</div>
+          <div class="text-h7">JUMLAH KATEGORI</div>
           <p class="text-h5 text--primary">2.500</p>
         </v-card-text>
       </v-card>
