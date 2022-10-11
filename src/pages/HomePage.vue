@@ -15,15 +15,27 @@
       </v-card>
     </div>
     <!-- Chart Survei -->
-    <div class="d-flex mt-5">
-      <div class="text-center">
+    <div class="d-flex justify-center mt-5">
+      <div class="text-center chart">
         <h4>JUMLAH SURVEI PER RESPONDEN</h4>
-        <apexchart width="500" type="bar" :options="options" :series="series">
+        <apexchart
+          width="100%"
+          height="100%"
+          type="bar"
+          :options="options"
+          :series="series"
+        >
         </apexchart>
       </div>
-      <div class="text-center">
+      <div class="text-center chart">
         <h4>JUMLAH SURVEI PER PERIODE</h4>
-        <apexchart width="500" type="bar" :options="options" :series="series2">
+        <apexchart
+          width="100%"
+          height="100%"
+          type="bar"
+          :options="options"
+          :series="series2"
+        >
         </apexchart>
       </div>
     </div>
@@ -48,6 +60,7 @@
     </v-card>
   </div>
 </template>
+
 <script>
 export default {
   name: "HomePage",
@@ -197,3 +210,10 @@ export default {
   },
 };
 </script>
+
+<style>
+.chart {
+  width: 600px;
+  height: 400px;
+}
+</style>
