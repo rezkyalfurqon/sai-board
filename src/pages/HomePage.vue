@@ -40,7 +40,7 @@
       </div>
     </div>
     <!-- TABEL SURVEI -->
-    <v-card>
+    <v-card class="mt-10">
       <v-card-title>
         TABEL SURVEI TELKOM UNIVERSITY
         <v-spacer></v-spacer>
