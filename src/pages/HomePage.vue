@@ -1,79 +1,199 @@
 <template>
-  <v-layout row wrap>
-    <v-flex sm6 xs12 md6 lg4>
+  <div>
+    <div class="d-flex">
       <v-card class="ma-5" width="300" height="80" color="#E3E3E3">
         <v-card-text class="text-center pa-2">
           <div class="text-h7 card-text">JUMLAH SURVEI</div>
           <p class="text-h5 text--primary">2.500</p>
         </v-card-text>
       </v-card>
-    </v-flex>
-    <v-flex sm6 xs12 md6 lg4>
       <v-card class="ma-5" width="300" height="80" color="#E3E3E3">
         <v-card-text class="text-center pa-2">
           <div class="text-h7">JUMLAH KATEGORI</div>
           <p class="text-h5 text--primary">2.500</p>
         </v-card-text>
       </v-card>
-    </v-flex>
-    <div class="dark ml-5">
-      <canvas id="Survei" width="450" height="300"></canvas>
     </div>
-    <div class="dark ml-5">
-      <canvas id="myChart2" width="450" height="300"></canvas>
+    <!-- Chart Survei -->
+    <div class="d-flex mt-5">
+      <div class="text-center">
+        <h4>JUMLAH SURVEI PER RESPONDEN</h4>
+        <apexchart width="500" type="bar" :options="options" :series="series">
+        </apexchart>
+      </div>
+      <div class="text-center">
+        <h4>JUMLAH SURVEI PER PERIODE</h4>
+        <apexchart width="500" type="bar" :options="options" :series="series2">
+        </apexchart>
+      </div>
     </div>
-  </v-layout>
+    <!-- TABEL SURVEI -->
+    <v-card>
+      <v-card-title>
+        TABEL SURVEI TELKOM UNIVERSITY
+        <v-spacer></v-spacer>
+        <v-text-field
+          v-model="search"
+          append-icon="mdi-magnify"
+          label="Search"
+          single-line
+          hide-details
+        ></v-text-field>
+      </v-card-title>
+      <v-data-table
+        :headers="headers"
+        :items="tableHome"
+        :search="search"
+      ></v-data-table>
+    </v-card>
+  </div>
 </template>
 <script>
-import Chart from "chart.js/auto";
-
 export default {
   name: "HomePage",
-  mounted() {
-    const ctx = document.getElementById("Survei");
-    const myChart = new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: [
-          "Mahasiswa",
-          "Wisudawan",
-          "Pegawai",
-          "Mitra",
-          "Orang Tua",
-          "CSI",
-        ],
-        datasets: [
-          {
-            label: "JUMLAH SURVEI PER RESPONDEN",
-            data: [12, 10, 3, 5, 2, 3],
-            backgroundColor: [
-              "rgba(255, 99, 132, 2)",
-              "rgba(54, 162, 235, 2)",
-              "rgba(255, 206, 86, 2)",
-              "rgba(75, 192, 192, 2)",
-              "rgba(153, 102, 255,2)",
-              "rgba(255, 159, 64, 2)",
-            ],
-            borderColor: [
-              "rgba(255, 99, 132, 1)",
-              "rgba(54, 162, 235, 1)",
-              "rgba(255, 206, 86, 1)",
-              "rgba(75, 192, 192, 1)",
-              "rgba(153, 102, 255, 1)",
-              "rgba(255, 159, 64, 1)",
-            ],
-            borderWidth: 1,
-          },
-        ],
-      },
+
+  data() {
+    return {
       options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
+        chart: {
+          type: "bar",
         },
       },
-    });
+      series: [
+        {
+          data: [
+            {
+              x: "Mahasiswa",
+              y: 20,
+              fillColor: "#ED7D31",
+            },
+            {
+              x: "Wisudawan",
+              y: 18,
+              fillColor: "#EDCF31",
+            },
+            {
+              x: "Pegawai",
+              y: 7,
+              fillColor: "#023915",
+            },
+            {
+              x: "Mitra",
+              y: 10,
+              fillColor: "#AFEFB2",
+            },
+            {
+              x: "Orang Tua",
+              y: 3,
+              fillColor: "#43A8F1",
+            },
+            {
+              x: "CSI",
+              y: 5,
+              fillColor: "#EE2424",
+            },
+          ],
+        },
+      ],
+      series2: [
+        {
+          data: [
+            {
+              x: "19/20 Ganjil",
+              y: 20,
+              fillColor: "#ED7D31",
+            },
+            {
+              x: "19/20 Genap",
+              y: 18,
+              fillColor: "#EDCF31",
+            },
+            {
+              x: "20/21 Ganjil",
+              y: 15,
+              fillColor: "#023915",
+            },
+            {
+              x: "20/21 Genap",
+              y: 27,
+              fillColor: "#AFEFB2",
+            },
+            {
+              x: "21/22 Ganjil",
+              y: 15,
+              fillColor: "#43A8F1",
+            },
+            {
+              x: "21/22 Ganjil",
+              y: 20,
+              fillColor: "#EE2424",
+            },
+          ],
+        },
+      ],
+      search: "",
+      headers: [
+        {
+          text: "No",
+          align: "start",
+          sortable: false,
+          value: "nomor",
+        },
+        { text: "Nama Survei", value: "namaSurvei" },
+        { text: "Link Laporan", value: "linkLaporan" },
+        { text: "Action", value: "action" },
+      ],
+      tableHome: [
+        {
+          nomor: 1,
+          namaSurvei: "Edom Ganjil 2021-2011",
+          linkLaporan: "Link",
+          action: "View",
+        },
+        {
+          nomor: 2,
+          namaSurvei: "CSI 2021 - Unit",
+          linkLaporan: "Link",
+          action: "View",
+        },
+        {
+          nomor: 3,
+          namaSurvei: "Kepuasan Orang Tua",
+          linkLaporan: "Link",
+          action: "View",
+        },
+        {
+          nomor: 4,
+          namaSurvei: "Kepuasan Wisudawan",
+          linkLaporan: "Link",
+          action: "View",
+        },
+        {
+          nomor: 5,
+          namaSurvei: "Kepuasan Mhs Genap 2021/2022",
+          linkLaporan: "Link",
+          action: "View",
+        },
+        {
+          nomor: 5,
+          namaSurvei: "Visi Misi - Mahasiswa",
+          linkLaporan: "Link",
+          action: "View",
+        },
+        {
+          nomor: 6,
+          namaSurvei: "EDOM Medio Genap 2021/2022",
+          linkLaporan: "Link",
+          action: "View",
+        },
+        {
+          nomor: 7,
+          namaSurvei: "EDOM Genap 2021/2022",
+          linkLaporan: "Link",
+          action: "View",
+        },
+      ],
+    };
   },
 };
 </script>

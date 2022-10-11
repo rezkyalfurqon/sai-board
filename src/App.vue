@@ -1,17 +1,20 @@
 <template>
   <div>
-    <PrivateLayout>
+    <component :is="Layout">
       <div>
         <router-view></router-view>
       </div>
-    </PrivateLayout>
+    </component>
   </div>
 </template>
 <script>
-import { PrivateLayout } from "./layout";
-
 export default {
   name: "App",
-  components: { PrivateLayout },
+  beforeMount() {
+    this.Layout = this.$route.meta.layout;
+  },
+  data: () => ({
+    Layout: null,
+  }),
 };
 </script>

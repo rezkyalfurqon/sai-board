@@ -53,6 +53,12 @@
             <label class="text-title white--text">Home</label>
           </div>
         </v-list-item>
+        <v-list-item>
+          <div>
+            <v-icon color="white" class="mr-2" size="25">mdi-home</v-icon>
+            <label class="text-title white--text">Executive Summary</label>
+          </div>
+        </v-list-item>
 
         <v-list-group color="white">
           <template v-slot:activator>
@@ -68,6 +74,30 @@
             link
           >
             <div @click="redirect(routeName)" class="d-flex menu">
+              <v-list-item-title
+                v-text="title"
+                class="white--text"
+              ></v-list-item-title>
+              <v-list-item-icon>
+                <v-icon v-text="icon" color="white"></v-icon>
+              </v-list-item-icon>
+            </div>
+          </v-list-item>
+        </v-list-group>
+        <v-list-group color="white">
+          <template v-slot:activator>
+            <v-icon color="white" class="mr-2">mdi-book</v-icon>
+            <label class="text-title white--text">Survei Kepuasan</label>
+          </template>
+          <template #appendIcon>
+            <v-icon color="white">mdi-chevron-down</v-icon>
+          </template>
+          <v-list-item
+            v-for="([title, icon, routeName], i) in kepuasan"
+            :key="i"
+            link
+          >
+            <div class="d-flex menu">
               <v-list-item-title
                 v-text="title"
                 class="white--text"
@@ -119,7 +149,6 @@ export default {
       this.$router.push({ name: "HomePage" });
     },
     redirect(routeName) {
-      console.log(routeName);
       this.$router.push({ name: routeName });
     },
   },
