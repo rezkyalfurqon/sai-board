@@ -29,41 +29,49 @@
           <v-list-item>
             <v-list-item-title>Profile</v-list-item-title>
           </v-list-item>
-          <v-list-item>
+          <v-list-item @click="directLogout">
             <v-list-item-title>Logout</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" app color="#A19E9E">
+    <v-navigation-drawer v-model="drawer" app color="#222d32">
       <v-layout column align-center>
         <v-flex class="mt-5">
           <v-avatar size="100">
             <img src="../assets/img1.png" alt="" />
           </v-avatar>
-          <p class="white--text subheading mt-4 text-center">Username</p>
+          <p class="white--text subheading mt-4 text-center text-nav">
+            Username
+          </p>
         </v-flex>
       </v-layout>
 
       <v-list>
         <v-list-item @click="directHome">
           <div>
-            <v-icon color="white" class="mr-2" size="25">mdi-home</v-icon>
-            <label class="text-title white--text">Home</label>
+            <v-icon color="white" class="mr-2" size="20">mdi-home</v-icon>
+            <label class="text-title white--text text-nav">Home</label>
           </div>
         </v-list-item>
-        <v-list-item>
+        <v-list-item @click="directExecutiveSummary">
           <div>
-            <v-icon color="white" class="mr-2" size="25">mdi-home</v-icon>
-            <label class="text-title white--text">Executive Summary</label>
+            <v-icon color="white" class="mr-2" size="20">mdi-book</v-icon>
+            <label class="text-title white--text text-nav"
+              >Executive Summary</label
+            >
           </div>
         </v-list-item>
 
         <v-list-group color="white">
           <template v-slot:activator>
-            <v-icon color="white" class="mr-2">mdi-book</v-icon>
-            <label class="text-title white--text">Survei Kepuasan Dosen</label>
+            <v-icon color="white" class="mr-2" size="20"
+              >mdi-book-multiple</v-icon
+            >
+            <label class="text-title white--text text-nav"
+              >Survei Kepuasan Dosen</label
+            >
           </template>
           <template #appendIcon>
             <v-icon color="white">mdi-chevron-down</v-icon>
@@ -74,20 +82,22 @@
             link
           >
             <div @click="redirect(routeName)" class="d-flex menu">
+              <v-list-item-icon>
+                <v-icon v-text="icon" color="white" size="18"></v-icon>
+              </v-list-item-icon>
               <v-list-item-title
                 v-text="title"
-                class="white--text"
+                class="white--text text-nav"
               ></v-list-item-title>
-              <v-list-item-icon>
-                <v-icon v-text="icon" color="white"></v-icon>
-              </v-list-item-icon>
             </div>
           </v-list-item>
         </v-list-group>
-        <v-list-group color="white">
+        <v-list-group>
           <template v-slot:activator>
-            <v-icon color="white" class="mr-2">mdi-book</v-icon>
-            <label class="text-title white--text">Survei Kepuasan</label>
+            <v-icon color="white" class="mr-2" size="20">mdi-library</v-icon>
+            <label class="text-title white--text text-nav"
+              >Survei Kepuasan</label
+            >
           </template>
           <template #appendIcon>
             <v-icon color="white">mdi-chevron-down</v-icon>
@@ -98,13 +108,18 @@
             link
           >
             <div class="d-flex menu">
+              <v-list-item-icon>
+                <v-icon
+                  v-text="icon"
+                  color="white"
+                  size="18"
+                  class="mr-0"
+                ></v-icon>
+              </v-list-item-icon>
               <v-list-item-title
                 v-text="title"
-                class="white--text"
+                class="white--text text-nav"
               ></v-list-item-title>
-              <v-list-item-icon>
-                <v-icon v-text="icon" color="white"></v-icon>
-              </v-list-item-icon>
             </div>
           </v-list-item>
         </v-list-group>
@@ -133,7 +148,7 @@ export default {
   data: () => ({
     drawer: true,
     edom: [
-      ["EDoM", "mdi-file-chart", "edom"],
+      ["EDoM", "mdi-pencil-circle-outline", "edom"],
       ["EDPoM", "mdi-file", "edpom"],
       ["EDWoM", "mdi-file-document", "edwom"],
     ],
@@ -151,6 +166,12 @@ export default {
     redirect(routeName) {
       this.$router.push({ name: routeName });
     },
+    directLogout() {
+      this.$router.push({ name: "Login" });
+    },
+    directExecutiveSummary() {
+      this.$router.push({ name: "ExecutiveSummary" });
+    },
   },
 };
 </script>
@@ -159,6 +180,10 @@ export default {
   position: relative;
 }
 .menu {
-  margin-left: 35px;
+  margin-left: 0px;
+}
+.text-nav {
+  font-size: 13.5px;
+  font-weight: 500;
 }
 </style>
