@@ -26,20 +26,21 @@
     <div class="d-flex">
       <v-card class="ma-5" width="300" height="80" color="#E3E3E3">
         <v-card-text class="text-center pa-2">
-          <div class="text-h7 card-text">JUMLAH SURVEI</div>
-          <p class="text-h5 text--primary">2.500</p>
+          <div class="text-h7 card-text text--primary">RATA - RATA SKOR</div>
+          <p class="text-h5 text--primary">89.95</p>
         </v-card-text>
       </v-card>
       <v-card class="ma-5" width="300" height="80" color="#E3E3E3">
         <v-card-text class="text-center pa-2">
-          <div class="text-h7">JUMLAH KATEGORI</div>
-          <p class="text-h5 text--primary">2.500</p>
+          <div class="text-h7 text--primary">RATA - RATA PERSENTASE</div>
+          <p class="text-h5 text--primary">90.21%</p>
         </v-card-text>
       </v-card>
     </div>
     <!-- Chart Survei -->
     <div class="d-flex justify-center mt-5">
       <div class="text-center chart">
+        <h4>RATA - RATA SKOR EDOM</h4>
         <apexchart
           width="100%"
           height="100%"
@@ -47,11 +48,10 @@
           :options="options"
           :series="series"
         >
-          <h4>JUMLAH SURVEI PER RESPONDEN</h4>
         </apexchart>
       </div>
       <div class="text-center chart">
-        <h4>JUMLAH SURVEI PER PERIODE</h4>
+        <h4>RATA - RATA PERSENTASE EDOM</h4>
         <apexchart
           width="100%"
           height="100%"
@@ -130,34 +130,39 @@ export default {
         {
           data: [
             {
-              x: "Mahasiswa",
-              y: 20,
+              x: "FEB",
+              y: 85.15,
               fillColor: "#ED7D31",
             },
             {
-              x: "Wisudawan",
-              y: 18,
+              x: "FIF",
+              y: 88.22,
               fillColor: "#EDCF31",
             },
             {
-              x: "Pegawai",
-              y: 7,
+              x: "FIK",
+              y: 87.96,
               fillColor: "#023915",
             },
             {
-              x: "Mitra",
-              y: 10,
-              fillColor: "#AFEFB2",
+              x: "FIT",
+              y: 88.37,
+              fillColor: "#8F67FF",
             },
             {
-              x: "Orang Tua",
-              y: 3,
+              x: "FKB",
+              y: 86.54,
               fillColor: "#43A8F1",
             },
             {
-              x: "CSI",
-              y: 5,
+              x: "FRI",
+              y: 86.7,
               fillColor: "#EE2424",
+            },
+            {
+              x: "FTE",
+              y: 87.51,
+              fillColor: "#FF67DE",
             },
           ],
         },
@@ -166,33 +171,38 @@ export default {
         {
           data: [
             {
-              x: "19/20 Ganjil",
-              y: 20,
+              x: "FEB",
+              y: 85.07,
               fillColor: "#ED7D31",
             },
             {
-              x: "19/20 Genap",
-              y: 18,
+              x: "FIF",
+              y: 88.47,
               fillColor: "#EDCF31",
             },
             {
-              x: "20/21 Ganjil",
-              y: 15,
+              x: "FIK",
+              y: 88.14,
               fillColor: "#023915",
             },
             {
-              x: "20/21 Genap",
-              y: 27,
-              fillColor: "#AFEFB2",
+              x: "FIT",
+              y: 89.24,
+              fillColor: "#8F67FF",
             },
             {
-              x: "21/22 Ganjil",
-              y: 15,
+              x: "FKB",
+              y: 86.44,
               fillColor: "#43A8F1",
             },
             {
-              x: "21/22 Ganjil",
-              y: 20,
+              x: "FRI",
+              y: 86.86,
+              fillColor: "#EE2424",
+            },
+            {
+              x: "FTE",
+              y: 87.62,
               fillColor: "#EE2424",
             },
           ],
