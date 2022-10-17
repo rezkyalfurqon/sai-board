@@ -7,7 +7,7 @@
         @click.stop="drawer = !drawer"
         color="white"
       ></v-app-bar-nav-icon>
-      <div class="d-flex align-center">
+      <div class="d-flex align-center" @click="directHome">
         <LabelComponent
           label="SAI-BOARD"
           class="ml-2"
@@ -149,8 +149,8 @@ export default {
     drawer: true,
     edom: [
       ["EDoM", "mdi-pencil-circle-outline", "edom"],
-      ["EDPoM", "mdi-file", "edpom"],
-      ["EDWoM", "mdi-file-document", "edwom"],
+      ["EDPoM", "mdi-pencil-circle-outline", "edpom"],
+      ["EDWoM", "mdi-pencil-circle-outline", "edwom"],
     ],
     kepuasan: [
       ["Create", "mdi-plus-outline"],

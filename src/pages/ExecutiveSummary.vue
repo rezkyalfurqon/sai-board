@@ -10,6 +10,13 @@
       </v-col>
       <v-col cols="2">
         <v-select
+          :items="kategoriSelect"
+          :menu-props="{ top: false, offsetY: true }"
+          label="Kategori"
+        ></v-select>
+      </v-col>
+      <v-col cols="2">
+        <v-select
           :items="fakultasSelect"
           :menu-props="{ top: false, offsetY: true }"
           label="Fakultas"
@@ -50,6 +57,7 @@
         >
         </apexchart>
       </div>
+
       <div class="text-center chart">
         <h4>RATA - RATA PERSENTASE EDOM</h4>
         <apexchart
@@ -58,6 +66,19 @@
           type="bar"
           :options="options"
           :series="series2"
+        >
+        </apexchart>
+      </div>
+    </div>
+    <div class="d-flex justify-center mt-10">
+      <div class="text-center justify-center chart">
+        <h4>RATA - RATA PERSENTASE KATEGORI</h4>
+        <apexchart
+          width="100%"
+          height="100%"
+          type="radar"
+          :options="options"
+          :series="kategori"
         >
         </apexchart>
       </div>
@@ -126,6 +147,7 @@ export default {
           type: "bar",
         },
       },
+      // Bar Chart Skor Edom
       series: [
         {
           data: [
@@ -167,6 +189,9 @@ export default {
           ],
         },
       ],
+      // Bar Chart Skor Edom
+
+      // Bar Chart Persentase Edom
       series2: [
         {
           data: [
@@ -208,6 +233,57 @@ export default {
           ],
         },
       ],
+      // Bar Chart Persentase Edom
+
+      // Radar Chart Kategori
+      kategori: [
+        {
+          data: [
+            {
+              x: "SRP",
+              y: 88.25,
+              fillColor: "#ED7D31",
+            },
+            {
+              x: "SD",
+              y: 87.63,
+              fillColor: "#EDCF31",
+            },
+            {
+              x: "MP",
+              y: 87.81,
+              fillColor: "#023915",
+            },
+            {
+              x: "KPP",
+              y: 87.72,
+              fillColor: "#8F67FF",
+            },
+            {
+              x: "T",
+              y: 87.43,
+              fillColor: "#43A8F1",
+            },
+            {
+              x: "CP",
+              y: 87.37,
+              fillColor: "#EE2424",
+            },
+            {
+              x: "PD",
+              y: 87.53,
+              fillColor: "#EE2424",
+            },
+            {
+              x: "AoE",
+              y: 87.33,
+              fillColor: "#EE2424",
+            },
+          ],
+        },
+      ],
+      // Radar Chart Kategori
+
       search: "",
       headers: [
         { text: "Nama Survei", value: "namaSurvei" },
@@ -262,6 +338,14 @@ export default {
         "2020/2021 - Genap",
         "2021/2022 - Ganjil",
       ],
+      kategoriSelect: [
+        "Dosen Pegawai Tetap",
+        "Dosen Luar Biasa",
+        "Dosen Profesional Full-Time",
+        "Dosen Profesional Part-Time",
+        "Dosen Perbantuan Kopertis",
+        "Dosen Perbantuan Telkom",
+      ],
       fakultasSelect: [
         "Fakultas Teknik Elektro",
         "Fakultas Teknik Informatika",
@@ -271,7 +355,12 @@ export default {
         "Fakultas Teknik Industri Kreatif",
         "Fakultas Teknik Ilmu Terapan",
       ],
-      prodiSelect: ["Foo", "Bar", "Fizz", "Buzz"],
+      prodiSelect: [
+        "S1 Teknik Elektro",
+        "S1 Teknik Telekomunikasi",
+        "S1 Teknik Komputer",
+        "S1 Teknik Fisika",
+      ],
     };
   },
   // GENERATOR PDF
