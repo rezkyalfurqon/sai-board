@@ -1,33 +1,44 @@
 <template>
   <div>
     <div class="pa-3 d-flex">
-      <v-col cols="2">
-        <v-select
+      <v-col class="d-flex" sm="2">
+        <v-autocomplete
           :items="tahunSelect"
-          :menu-props="{ top: false, offsetY: true }"
-          label="Tahun"
-        ></v-select>
+          label="Tahun Akademik"
+          placeholder="Tahun Akademik"
+          outlined
+          dense
+        ></v-autocomplete>
       </v-col>
-      <v-col cols="2">
-        <v-select
+      <v-col class="d-flex" sm="2">
+        <v-autocomplete
           :items="kategoriSelect"
-          :menu-props="{ top: false, offsetY: true }"
-          label="Kategori"
-        ></v-select>
+          label="Kategori Dosen"
+          placeholder="Kategori Dosen"
+          required
+          outlined
+          dense
+        ></v-autocomplete>
       </v-col>
-      <v-col cols="2">
-        <v-select
+      <v-col class="d-flex" sm="2">
+        <v-autocomplete
           :items="fakultasSelect"
-          :menu-props="{ top: false, offsetY: true }"
           label="Fakultas"
-        ></v-select>
+          placeholder="Fakultas"
+          required
+          outlined
+          dense
+        ></v-autocomplete>
       </v-col>
-      <v-col cols="2">
-        <v-select
+      <v-col class="d-flex" sm="2">
+        <v-autocomplete
           :items="prodiSelect"
-          :menu-props="{ top: false, offsetY: true }"
           label="Prodi"
-        ></v-select>
+          placeholder="Prodi"
+          required
+          outlined
+          dense
+        ></v-autocomplete>
       </v-col>
     </div>
     <div class="d-flex">
@@ -98,6 +109,7 @@
         <v-btn depressed class="mx-2" color="error"> Excel </v-btn>
         <v-btn depressed class="mx-2" color="error"> CSV </v-btn>
       </div>
+      <v-spacer></v-spacer>
       <div>
         <v-btn depressed class="mx-2 button" color="#1AC635"> Copy </v-btn>
         <v-btn depressed class="mx-2" color="#A19E9E"> Print </v-btn>
@@ -147,7 +159,7 @@ export default {
           type: "bar",
         },
       },
-      // Bar Chart Skor Edom
+      // Bar Chart Rata - Rata Skor Edom
       series: [
         {
           data: [
@@ -189,9 +201,9 @@ export default {
           ],
         },
       ],
-      // Bar Chart Skor Edom
+      // Bar Chart Rata - Rata Skor Edom
 
-      // Bar Chart Persentase Edom
+      // Bar Chart Rata - Rata Persentase Edom
       series2: [
         {
           data: [
@@ -228,12 +240,12 @@ export default {
             {
               x: "FTE",
               y: 87.62,
-              fillColor: "#EE2424",
+              fillColor: "#FF67DE",
             },
           ],
         },
       ],
-      // Bar Chart Persentase Edom
+      // Bar Chart Rata - Rata Persentase Edom
 
       // Radar Chart Kategori
       kategori: [

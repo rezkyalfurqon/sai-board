@@ -38,9 +38,12 @@
             ></v-text-field>
 
             <v-text-field
+              v-model="password"
+              :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+              :type="show1 ? 'text' : 'password'"
               label="Password"
-              type="password"
               prepend-icon="mdi-lock"
+              @click:append="show1 = !show1"
             ></v-text-field>
 
             <v-btn
@@ -60,7 +63,14 @@
 <script>
 export default {
   name: "Login",
-
+  data() {
+    return {
+      show1: false,
+      show2: true,
+      show3: false,
+      show4: false,
+    };
+  },
   methods: {
     directHome() {
       this.$router.push({
