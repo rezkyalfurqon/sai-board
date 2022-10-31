@@ -16,6 +16,7 @@
     "jspdf-autotable": "^3.5.25",
     "vue": "^2.6.14",
     "vue-apexcharts": "^1.6.2",
+    "vue-json-csv": "^2.1.0",
     "vue-router": "^3.6.5",
     "vuetify": "^2.6.0",
     "write-excel-file": "^1.4.13"

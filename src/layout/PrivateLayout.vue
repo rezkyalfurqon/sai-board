@@ -55,14 +55,6 @@
             <label class="text-title white--text text-nav">Home</label>
           </div>
         </v-list-item>
-        <v-list-item @click="directExecutiveSummary">
-          <div>
-            <v-icon color="white" class="mr-2" size="20">mdi-book</v-icon>
-            <label class="text-title white--text text-nav"
-              >Executive Summary</label
-            >
-          </div>
-        </v-list-item>
 
         <v-list-group color="white">
           <template v-slot:activator>
@@ -168,9 +160,6 @@ export default {
     },
     directLogout() {
       this.$router.push({ name: "Login" });
-    },
-    directExecutiveSummary() {
-      this.$router.push({ name: "ExecutiveSummary" });
     },
   },
 };

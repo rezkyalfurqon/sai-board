@@ -3,7 +3,6 @@ import VueRouter from "vue-router";
 import Dashboard from "@/pages/HomePage.vue";
 import EdomPage from "@/pages/EdomPage.vue";
 import LoginPage from "@/pages/Login.vue";
-import ExecutiveSummary from "@/pages/ExecutiveSummary.vue";
 
 Vue.use(VueRouter);
 
@@ -26,12 +25,6 @@ const routes = [
     name: "edom",
     meta: { layout: "PrivateLayout" },
     component: EdomPage,
-  },
-  {
-    path: "/executive-summary",
-    name: "ExecutiveSummary",
-    meta: { layout: "PrivateLayout" },
-    component: ExecutiveSummary,
   },
 ];
 
