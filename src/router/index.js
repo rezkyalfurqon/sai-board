@@ -3,12 +3,13 @@ import VueRouter from "vue-router";
 import Dashboard from "@/pages/HomePage.vue";
 import EdomPage from "@/pages/EdomPage.vue";
 import LoginPage from "@/pages/Login.vue";
+import InputEdom from "@/pages/InputEdom.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/login",
+    path: "/",
     name: "Login",
     meta: { layout: "PublicLayout" },
     component: LoginPage,
@@ -25,6 +26,12 @@ const routes = [
     name: "edom",
     meta: { layout: "PrivateLayout" },
     component: EdomPage,
+  },
+  {
+    path: "/input-edom",
+    name: "InputEdom",
+    meta: { layout: "PrivateLayout" },
+    component: InputEdom,
   },
 ];
 

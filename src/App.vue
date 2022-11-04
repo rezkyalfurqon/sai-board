@@ -1,6 +1,6 @@
 <template>
   <div>
-    <component :is="Layout">
+    <component :is="layout">
       <div>
         <router-view></router-view>
       </div>
@@ -10,11 +10,15 @@
 <script>
 export default {
   name: "App",
-  beforeMount() {
-    this.Layout = this.$route.meta.layout;
+  computed: {
+    layout() {
+      let pageLayout;
+      if (this.$route && this.$route.meta.layout) {
+        pageLayout = this.$route.meta.layout;
+      }
+
+      return pageLayout;
+    },
   },
-  data: () => ({
-    Layout: null,
-  }),
 };
 </script>

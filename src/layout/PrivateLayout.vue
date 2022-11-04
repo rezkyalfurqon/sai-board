@@ -84,6 +84,7 @@
             </div>
           </v-list-item>
         </v-list-group>
+
         <v-list-group>
           <template v-slot:activator>
             <v-icon color="white" class="mr-2" size="20">mdi-library</v-icon>
@@ -159,7 +160,7 @@ export default {
       this.$router.push({ name: routeName });
     },
     directLogout() {
-      this.$router.push({ name: "Login" });
+      this.$router.replace({ name: "Login" });
     },
   },
 };

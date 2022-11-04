@@ -106,19 +106,14 @@
         <v-btn depressed class="mx-2" color="error" @click="generatePDF">
           PDF
         </v-btn>
-        <v-btn
-          depressed
-          class="mx-2"
-          color="error"
-          :data="json_data"
-          name="filename.csv"
-        >
-          Excel
-        </v-btn>
-        <!-- <v-btn depressed class="mx-2" color="error"> CSV </v-btn> -->
+        <v-btn depressed class="mx-2" color="error"> Excel </v-btn>
+        <v-btn depressed class="mx-2" color="error"> CSV </v-btn>
       </div>
       <v-spacer></v-spacer>
       <div>
+        <v-btn depressed class="primary mx-2 button" @click="directInputEdom">
+          Add
+        </v-btn>
         <v-btn depressed class="mx-2 button" color="#1AC635"> Copy </v-btn>
         <v-btn depressed class="mx-2" color="#A19E9E"> Print </v-btn>
       </div>
@@ -427,6 +422,9 @@ export default {
   },
   // GENERATOR PDF
   methods: {
+    directInputEdom() {
+      this.$router.push({ name: "InputEdom" });
+    },
     generatePDF() {
       const columns = [
         { title: "Fakultas", dataKey: "fakultas" },

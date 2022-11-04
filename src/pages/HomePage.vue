@@ -52,11 +52,33 @@
           hide-details
         ></v-text-field>
       </v-card-title>
-      <v-data-table
-        :headers="headers"
-        :items="tableHome"
-        :search="search"
-      ></v-data-table>
+      <v-data-table :headers="headers" :items="tableHome" :search="search">
+        <template v-slot:top>
+          <v-dialog v-model="dialogDelete" max-width="500px">
+            <v-card>
+              <v-card-title class="text-h6"
+                >Apakah Yakin Akan Menghapus Item Ini?</v-card-title
+              >
+              <v-card-text>
+                Tekan OK akan menghapus data secara permanent.
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="blue darken-1" text @click="closeDelete"
+                  >Cancel</v-btn
+                >
+                <v-btn color="blue darken-1" text @click="deleteItemConfirm"
+                  >OK</v-btn
+                >
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </template>
+        <template v-slot:[`item.actions`]="{ item }">
+          <v-icon small class="mr-2" @click="editItem(item)"> mdi-eye </v-icon>
+          <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
+        </template>
+      </v-data-table>
     </v-card>
   </div>
 </template>
@@ -145,6 +167,8 @@ export default {
         },
       ],
       search: "",
+      dialog: false,
+      dialogDelete: false,
       headers: [
         {
           text: "No",
@@ -154,59 +178,133 @@ export default {
         },
         { text: "Nama Survei", value: "namaSurvei" },
         { text: "Link Laporan", value: "linkLaporan", sortable: false },
-        { text: "Action", value: "action", sortable: false },
+        { text: "Actions", value: "actions", sortable: false },
       ],
-      tableHome: [
+      tableHome: [],
+      editedIndex: -1,
+      editedItem: {
+        nomor: "",
+        namaSurvei: "",
+        linkLaporan: null,
+      },
+      defaultItem: {
+        nomor: "",
+        namaSurvei: "",
+        linkLaporan: null,
+      },
+    };
+  },
+
+  computed: {
+    formTitle() {
+      return this.editedIndex === -1 ? "Input Data" : "Edit Data";
+    },
+  },
+
+  watch: {
+    dialog(val) {
+      val || this.close();
+    },
+    dialogDelete(val) {
+      val || this.closeDelete();
+    },
+  },
+
+  created() {
+    this.initialize();
+  },
+  computed: {
+    formTitle() {
+      return this.editedIndex === -1 ? "Input Data" : "Edit Data";
+    },
+  },
+
+  methods: {
+    initialize() {
+      this.tableHome = [
         {
           nomor: 1,
           namaSurvei: "Edom Ganjil 2021-2011",
           linkLaporan: "Link",
-          action: "View",
         },
         {
           nomor: 2,
           namaSurvei: "CSI 2021 - Unit",
           linkLaporan: "Link",
-          action: "View",
         },
         {
           nomor: 3,
           namaSurvei: "Kepuasan Orang Tua",
           linkLaporan: "Link",
-          action: "View",
         },
         {
           nomor: 4,
           namaSurvei: "Kepuasan Wisudawan",
           linkLaporan: "Link",
-          action: "View",
         },
         {
           nomor: 5,
           namaSurvei: "Kepuasan Mhs Genap 2021/2022",
           linkLaporan: "abc",
-          action: "View",
         },
         {
           nomor: 5,
           namaSurvei: "Visi Misi - Mahasiswa",
           linkLaporan: "Link",
-          action: "View",
         },
         {
           nomor: 6,
           namaSurvei: "EDOM Medio Genap 2021/2022",
           linkLaporan: "Link",
-          action: "View",
         },
         {
           nomor: 7,
           namaSurvei: "EDOM Genap 2021/2022",
           linkLaporan: "Link",
-          action: "View",
         },
-      ],
-    };
+      ];
+    },
+    editItem(item) {
+      this.editedIndex = this.tableHome.indexOf(item);
+      this.editedItem = Object.assign({}, item);
+      this.dialog = true;
+    },
+
+    deleteItem(item) {
+      this.editedIndex = this.tableHome.indexOf(item);
+      this.editedItem = Object.assign({}, item);
+      this.dialogDelete = true;
+    },
+
+    deleteItemConfirm() {
+      this.tableHome.splice(this.editedIndex, 1);
+      this.closeDelete();
+    },
+
+    close() {
+      this.dialog = false;
+      this.$nextTick(() => {
+        this.editedItem = Object.assign({}, this.defaultItem);
+        this.editedIndex = -1;
+      });
+    },
+
+    closeDelete() {
+      this.dialogDelete = false;
+      this.$nextTick(() => {
+        this.editedItem = Object.assign({}, this.defaultItem);
+        this.editedIndex = -1;
+      });
+    },
+
+    save() {
+      if (this.editedIndex > -1) {
+        Object.assign(this.tableHome[this.editedIndex], this.editedItem);
+      } else {
+        this.tableHome.push(this.editedItem);
+      }
+      this.close();
+    },
   },
 };
 </script>
