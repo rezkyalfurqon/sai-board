@@ -143,13 +143,6 @@
 <script>
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
-import ExportExcelSheetVueJs from "export-excel-sheet-vue-js";
-import Vue from "vue";
-import JsonCSV from "vue-json-csv";
-
-Vue.component("downloadCsv", JsonCSV);
-
-Vue.use(ExportExcelSheetVueJs);
 
 export default {
   name: "edom",
@@ -394,30 +387,6 @@ export default {
         "S1 Teknik Komputer",
         "S1 Teknik Fisika",
       ],
-      // GENERATOR CSV
-      json_data: [
-        {
-          name: "Tony Peña",
-          city: "New York",
-          country: "United States",
-          birthdate: "1978-03-15",
-          phone: {
-            mobile: "1-541-754-3010",
-            landline: "(541) 754-3010",
-          },
-        },
-        {
-          name: "Thessaloniki",
-          city: "Athens",
-          country: "Greece",
-          birthdate: "1987-11-23",
-          phone: {
-            mobile: "+1 855 275 5071",
-            landline: "(2741) 2621-244",
-          },
-        },
-      ],
-      // GENERATOR CSV
     };
   },
   // GENERATOR PDF
@@ -454,8 +423,8 @@ export default {
       });
       doc.save(`Tabel EDoM.pdf`);
     },
+    // GENERATOR PDF
   },
-  // GENERATOR PDF
 };
 </script>
 

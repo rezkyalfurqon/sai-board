@@ -6,23 +6,17 @@
       </p>
       <br />
     </div>
-    <p class="myFontSubtitle" style="font-size: 17px">Input data</p>
+    <p class="myFontSubtitle text-h7 text--primary">Input Data</p>
     <br />
     <v-form>
       <v-row>
         <v-col cols="2">
-          <v-header class="myFontSubtitle" style="font-size: ;17px"
-            >Download Template
-          </v-header>
+          <div class="myFontSubtitle text-h7 text--primary">
+            Download Template
+          </div>
         </v-col>
         <v-col>
-          <v-btn
-            href="../assets/Book1.xlsx"
-            download
-            color="rgba(26, 198, 53, 1)"
-            on-click
-            >Template</v-btn
-          >
+          <v-btn color="rgba(26, 198, 53, 1)">Template</v-btn>
           <v-btn class="mx-1" color="rgba(67, 168, 241, 1)">Template</v-btn>
         </v-col>
       </v-row>
@@ -30,9 +24,7 @@
       <!-- tahun edom -->
       <v-row>
         <v-col cols="2">
-          <v-header class="myFontSubtitle" style="font-size: ;17px"
-            >Tahun Edom
-          </v-header>
+          <div class="myFontSubtitle text-h7 text--primary">Tahun Edom</div>
         </v-col>
         <v-col cols="4">
           <v-combobox
@@ -49,27 +41,25 @@
       <!-- choose file edom -->
       <v-row>
         <v-col cols="2">
-          <v-header class="myFontSubtitle" style="font-size: ;17px"
-            >Choose File Edom
-          </v-header>
+          <div class="myFontSubtitle text-h7 text--primary">
+            Choose File Edom
+          </div>
         </v-col>
         <v-col cols="3">
-          <input type="file" @change="onFileSelected" filled />
+          <input type="file" filled />
         </v-col>
       </v-row>
       <!--  choose file-->
       <v-row>
         <v-col cols="2">
-          <v-header class="myFontSubtitle" style="font-size: ;17px"
-            >Choose File</v-header
-          >
+          <div class="myFontSubtitle text-h7 text--primary">Choose File</div>
         </v-col>
         <v-col cols="3">
-          <input type="file" @change="onFileSelected" filled />
+          <input type="file" filled />
         </v-col>
       </v-row>
 
-      <v-div class="d-flex">
+      <div class="d-flex">
         <v-col cols="12" sm="8"></v-col>
         <v-btn
           href="/edom"
@@ -77,7 +67,7 @@
           color="#B6252A"
           >Submit</v-btn
         >
-      </v-div>
+      </div>
     </v-form>
   </v-container>
 </template>
@@ -109,7 +99,7 @@ export default {
 }
 
 .myFontSubtitle {
-  font-family: "Battambang";
+  /* font-family: "Battambang"; */
   font-style: normal;
   font-weight: 400;
 
@@ -118,7 +108,7 @@ export default {
   color: black;
 }
 .myFontButton {
-  font-family: "Battambang";
+  /* font-family: "Battambang"; */
   font-style: normal;
   font-weight: 700;
   font-size: 13px;

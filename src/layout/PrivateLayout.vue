@@ -2,7 +2,7 @@
   <!-- App.vue -->
 
   <v-app>
-    <v-app-bar app color="#B91432">
+    <v-app-bar app color="#B91432" :style="{ 'z-index': '100' }">
       <v-app-bar-nav-icon
         @click.stop="drawer = !drawer"
         color="white"
@@ -36,7 +36,12 @@
       </v-menu>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" app color="#222d32">
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+      color="#222d32"
+      :style="{ 'z-index': '100' }"
+    >
       <v-layout column align-center>
         <v-flex class="mt-5">
           <v-avatar size="100">
