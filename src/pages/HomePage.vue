@@ -75,7 +75,7 @@
           </v-dialog>
         </template>
         <template v-slot:[`item.actions`]="{ item }">
-          <v-icon small class="mr-2" @click="editItem(item)"> mdi-eye </v-icon>
+          <v-icon small class="mr-2" @click="viewItem(item)"> mdi-eye </v-icon>
           <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
         </template>
       </v-data-table>
@@ -177,7 +177,7 @@ export default {
           value: "nomor",
         },
         { text: "Nama Survei", value: "namaSurvei" },
-        { text: "Link Laporan", value: "linkLaporan", sortable: false },
+        // { text: "Link Laporan", value: "linkLaporan", sortable: false },
         { text: "Actions", value: "actions", sortable: false },
       ],
       tableHome: [],
@@ -224,50 +224,60 @@ export default {
       this.tableHome = [
         {
           nomor: 1,
-          namaSurvei: "Edom Ganjil 2021-2011",
-          linkLaporan: "Link",
+          namaSurvei: "Edom 2021/2022 - Ganjil ",
+          linkLaporan:
+            "https://telkomuniversityofficial-my.sharepoint.com/:b:/r/personal/sai_365_telkomuniversity_ac_id/Documents/LAPORAN%20LAPORAN%20SAI%20DI%20WEB/SURVEI/EDOM/2021-2022/LAPORAN%20EDOM%20GANJIL%202021%202022.pdf?csf=1&web=1&e=L3x3V1",
         },
         {
           nomor: 2,
           namaSurvei: "CSI 2021 - Unit",
-          linkLaporan: "Link",
+          linkLaporan:
+            "https://drive.google.com/file/d/1C6752pV3yAmmUGWt_89g_YcoUdRXCmZq/view",
         },
         {
           nomor: 3,
           namaSurvei: "Kepuasan Orang Tua",
-          linkLaporan: "Link",
+          linkLaporan:
+            "https://drive.google.com/file/d/1C6752pV3yAmmUGWt_89g_YcoUdRXCmZq/view",
         },
         {
           nomor: 4,
           namaSurvei: "Kepuasan Wisudawan",
-          linkLaporan: "Link",
+          linkLaporan:
+            "https://drive.google.com/file/d/1C6752pV3yAmmUGWt_89g_YcoUdRXCmZq/view",
         },
         {
           nomor: 5,
           namaSurvei: "Kepuasan Mhs Genap 2021/2022",
-          linkLaporan: "abc",
-        },
-        {
-          nomor: 5,
-          namaSurvei: "Visi Misi - Mahasiswa",
-          linkLaporan: "Link",
+          linkLaporan:
+            "https://drive.google.com/file/d/1C6752pV3yAmmUGWt_89g_YcoUdRXCmZq/view",
         },
         {
           nomor: 6,
-          namaSurvei: "EDOM Medio Genap 2021/2022",
-          linkLaporan: "Link",
+          namaSurvei: "Visi Misi - Mahasiswa",
+          linkLaporan:
+            "https://drive.google.com/file/d/1C6752pV3yAmmUGWt_89g_YcoUdRXCmZq/view",
         },
         {
           nomor: 7,
+          namaSurvei: "EDOM Medio Genap 2021/2022",
+          linkLaporan:
+            "https://drive.google.com/file/d/1C6752pV3yAmmUGWt_89g_YcoUdRXCmZq/view",
+        },
+        {
+          nomor: 8,
           namaSurvei: "EDOM Genap 2021/2022",
-          linkLaporan: "Link",
+          linkLaporan:
+            "https://telkomuniversityofficial-my.sharepoint.com/personal/sai_365_telkomuniversity_ac_id/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fsai%5F365%5Ftelkomuniversity%5Fac%5Fid%2FDocuments%2FLAPORAN%20LAPORAN%20SAI%20DI%20WEB%2FSURVEI%2FEDOM%2F2021%2D2022%2FLAPORAN%20EDOM%20GENAP%202021%202022%2Epdf&parent=%2Fpersonal%2Fsai%5F365%5Ftelkomuniversity%5Fac%5Fid%2FDocuments%2FLAPORAN%20LAPORAN%20SAI%20DI%20WEB%2FSURVEI%2FEDOM%2F2021%2D2022&ga=1",
         },
       ];
     },
-    editItem(item) {
-      this.editedIndex = this.tableHome.indexOf(item);
-      this.editedItem = Object.assign({}, item);
-      this.dialog = true;
+    viewItem(item) {
+      // this.editedIndex = this.tableHome.indexOf(item);
+      // this.editedItem = Object.assign({}, item);
+      // this.dialog = true;
+
+      window.location.href = item.linkLaporan || "";
     },
 
     deleteItem(item) {

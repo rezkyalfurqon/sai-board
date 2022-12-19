@@ -6,7 +6,9 @@
       </p>
       <br />
     </div>
-    <p class="myFontSubtitle text-h7 text--primary">Input Data</p>
+    <p class="myFontSubtitle text-h7 text--primary text-bold">
+      Pastikan Data sudah sesuai dengan Template yang disediakan.
+    </p>
     <br />
     <v-form>
       <v-row>
@@ -16,8 +18,8 @@
           </div>
         </v-col>
         <v-col>
-          <v-btn color="rgba(26, 198, 53, 1)">Template</v-btn>
-          <v-btn class="mx-1" color="rgba(67, 168, 241, 1)">Template</v-btn>
+          <v-btn class="mr-2" color="#D6E4E5">Edom Dosen</v-btn>
+          <v-btn color="#D6E4E5">Edom Mata Kuliah</v-btn>
         </v-col>
       </v-row>
 
@@ -42,7 +44,7 @@
       <v-row>
         <v-col cols="2">
           <div class="myFontSubtitle text-h7 text--primary">
-            Choose File Edom
+            Choose File Edom Dosen
           </div>
         </v-col>
         <v-col cols="3">
@@ -52,7 +54,9 @@
       <!--  choose file-->
       <v-row>
         <v-col cols="2">
-          <div class="myFontSubtitle text-h7 text--primary">Choose File</div>
+          <div class="myFontSubtitle text-h7 text--primary">
+            Choose File Edom Mata Kuliah
+          </div>
         </v-col>
         <v-col cols="3">
           <input type="file" filled />
@@ -75,16 +79,16 @@
 <script>
 export default {
   name: "InputEdom",
-  data() {
-    return {
-      items: [
-        "2021/2022 - Ganjil",
-        "2021/2022 - Genap",
-        "2022/2023 - Ganjil",
-        "2022/2023 - Genap",
-      ],
-    };
-  },
+  // data() {
+  //   return {
+  //     items: [
+  //       "2021/2022 - Ganjil",
+  //       "2021/2022 - Genap",
+  //       "2022/2023 - Ganjil",
+  //       "2022/2023 - Genap",
+  //     ],
+  //   };
+  // },
 };
 </script>
 
