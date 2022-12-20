@@ -29,14 +29,13 @@
           <div class="myFontSubtitle text-h7 text--primary">Tahun Edom</div>
         </v-col>
         <v-col cols="4">
-          <v-combobox
-            :items="items"
-            dense
+          <v-text-field
+            label="Ex. (2021/2022 - Ganjil)"
             outlined
-            solo
-            hide-details
-            label="Choosee"
-          ></v-combobox>
+            dense
+            class="mb-0 red"
+          ></v-text-field>
+          <label class="mt-0 yellow">Contoh : 2021/2022 - Ganjil</label>
         </v-col>
       </v-row>
 
@@ -63,8 +62,8 @@
         </v-col>
       </v-row>
 
-      <div class="d-flex">
-        <v-col cols="12" sm="8"></v-col>
+      <div class="d-flex mt-10">
+        <v-col cols="5"></v-col>
         <v-btn
           href="/edom"
           class="myFontButton px-8 white--text"
