@@ -33,9 +33,9 @@
             label="Ex. (2021/2022 - Ganjil)"
             outlined
             dense
-            class="mb-0 red"
+            class="mb-0"
           ></v-text-field>
-          <label class="mt-0 yellow">Contoh : 2021/2022 - Ganjil</label>
+          <label>Contoh : 2021/2022 - Ganjil</label>
         </v-col>
       </v-row>
 
@@ -78,16 +78,6 @@
 <script>
 export default {
   name: "InputEdom",
-  // data() {
-  //   return {
-  //     items: [
-  //       "2021/2022 - Ganjil",
-  //       "2021/2022 - Genap",
-  //       "2022/2023 - Ganjil",
-  //       "2022/2023 - Genap",
-  //     ],
-  //   };
-  // },
 };
 </script>
 
