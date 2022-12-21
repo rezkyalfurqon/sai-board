@@ -177,7 +177,6 @@ export default {
           value: "nomor",
         },
         { text: "Nama Survei", value: "namaSurvei" },
-        // { text: "Link Laporan", value: "linkLaporan", sortable: false },
         { text: "Actions", value: "actions", sortable: false },
       ],
       tableHome: [],

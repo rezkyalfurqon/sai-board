@@ -66,10 +66,20 @@
         <v-col cols="5"></v-col>
         <v-btn
           href="/edom"
+          :loading="loading3"
+          :disabled="loading3"
+          color="#B6252A"
+          class="ma-2 white--text"
+          @click="loader = 'loading3'"
+        >
+          Upload
+          <v-icon right dark> mdi-cloud-upload </v-icon>
+        </v-btn>
+        <!-- <v-btn
+          href="/edom"
           class="myFontButton px-8 white--text"
           color="#B6252A"
-          >Submit</v-btn
-        >
+          >Submit</v-btn -->
       </div>
     </v-form>
   </v-container>
@@ -78,6 +88,22 @@
 <script>
 export default {
   name: "InputEdom",
+  data() {
+    return {
+      loader: null,
+      loading3: false,
+    };
+  },
+  watch: {
+    loader() {
+      const l = this.loader;
+      this[l] = !this[l];
+
+      setTimeout(() => (this[l] = false), 3000);
+
+      this.loader = null;
+    },
+  },
 };
 </script>
 

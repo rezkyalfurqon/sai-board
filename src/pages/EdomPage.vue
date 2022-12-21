@@ -95,33 +95,68 @@
       </div>
     </div>
 
-    <!-- Button Button -->
-    <div
-      class="mt-10 text-decoration-underline d-flex flex-column justifiy-space-between"
-    >
-      Download as :
-    </div>
-    <div class="mt-2 d-flex">
-      <div>
-        <v-btn depressed class="mx-2" color="error" @click="generatePDF">
-          PDF
-        </v-btn>
-        <v-btn depressed class="mx-2" color="error"> Excel </v-btn>
-        <v-btn depressed class="mx-2" color="error"> CSV </v-btn>
-      </div>
-      <v-spacer></v-spacer>
-      <div>
-        <v-btn depressed class="primary mx-2 button" @click="directInputEdom">
-          Add
-        </v-btn>
-        <v-btn depressed class="mx-2 button" color="#1AC635"> Copy </v-btn>
-        <v-btn depressed class="mx-2" color="#A19E9E"> Print </v-btn>
-      </div>
-    </div>
     <!-- TABEL SURVEI -->
     <v-card class="mt-2">
+      <!-- <div
+        class="mt-10 text-decoration-underline d-flex flex-column justifiy-space-between"
+      >
+        Download as :
+      </div> -->
+
       <v-card-title>
-        TABEL SURVEI TELKOM UNIVERSITY
+        <div class="d-flex flex-column justifiy-space-between">
+          TABEL SURVEI TELKOM UNIVERSITY
+          <div class="mt-2 d-flex">
+            <div>
+              <v-btn
+                small
+                outlined
+                color="error"
+                class="ma-1 error--text"
+                @click="generatePDF"
+              >
+                PDF
+                <v-icon right dark> mdi-file-pdf-box </v-icon>
+              </v-btn>
+              <v-btn small outlined color="success" class="ma-1 success--text">
+                Excel
+                <v-icon right dark> mdi-file-excel </v-icon>
+              </v-btn>
+              <v-btn small outlined color="success" class="ma-1 success--text">
+                CSV
+                <v-icon right dark> mdi-file-export </v-icon>
+              </v-btn>
+              <!-- <v-btn depressed class="mx-2" color="error"> Excel </v-btn>
+              <v-btn depressed class="mx-2" color="error"> CSV </v-btn> -->
+            </div>
+            <v-spacer></v-spacer>
+            <div>
+              <v-btn small outlined class="ma-1">
+                Copy
+                <v-icon right dark> mdi-content-copy </v-icon>
+              </v-btn>
+              <v-btn small outlined class="ma-1">
+                Print
+                <v-icon right dark> mdi-printer </v-icon>
+              </v-btn>
+              <!-- <v-btn depressed class="mx-2 button" color="#1AC635">
+                Copy
+              </v-btn>
+              <v-btn depressed class="mx-2" color="#A19E9E"> Print </v-btn> -->
+              <v-btn
+                small
+                outlined
+                color="primary"
+                class="ma-1 mx-2 button"
+                @click="directInputEdom"
+              >
+                Add
+                <v-icon right dark> mdi-plus-circle-outline </v-icon>
+              </v-btn>
+            </div>
+          </div>
+        </div>
+
         <v-spacer></v-spacer>
         <v-text-field
           v-model="search"
