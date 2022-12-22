@@ -2,6 +2,7 @@
   <!-- App.vue -->
 
   <v-app>
+    <!-- TOPBAR NAVIGATION -->
     <v-app-bar app color="#B91432" :style="{ 'z-index': '100' }">
       <v-app-bar-nav-icon
         @click.stop="drawer = !drawer"
@@ -17,25 +18,14 @@
       </div>
 
       <v-spacer></v-spacer>
-      <v-avatar color="primary" size="40" class="white--text">R</v-avatar>
-      <v-menu bottom left>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn dark icon v-bind="attrs" v-on="on">
-            <v-icon>mdi-menu-down</v-icon>
-          </v-btn>
-        </template>
-
-        <v-list>
-          <v-list-item>
-            <v-list-item-title>Profile</v-list-item-title>
-          </v-list-item>
-          <v-list-item @click="directLogout">
-            <v-list-item-title>Logout</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
+      <v-btn small color="#222d32" class="white--text" @click="directLogout">
+        Logout
+        <span class="mdi mdi-logout-variant"></span
+      ></v-btn>
     </v-app-bar>
+    <!-- TOPBAR NAVIGATION -->
 
+    <!-- SIDEBAR NAVIGATION -->
     <v-navigation-drawer
       v-model="drawer"
       app
@@ -123,6 +113,7 @@
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
+    <!-- SIDEBAR NAVIGATION -->
 
     <!-- Sizes your content based upon application components -->
     <v-main>

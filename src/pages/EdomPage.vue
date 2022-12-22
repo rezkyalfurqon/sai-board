@@ -97,12 +97,6 @@
 
     <!-- TABEL SURVEI -->
     <v-card class="mt-2">
-      <!-- <div
-        class="mt-10 text-decoration-underline d-flex flex-column justifiy-space-between"
-      >
-        Download as :
-      </div> -->
-
       <v-card-title>
         <div class="d-flex flex-column justifiy-space-between">
           TABEL SURVEI TELKOM UNIVERSITY
@@ -126,8 +120,6 @@
                 CSV
                 <v-icon right dark> mdi-file-export </v-icon>
               </v-btn>
-              <!-- <v-btn depressed class="mx-2" color="error"> Excel </v-btn>
-              <v-btn depressed class="mx-2" color="error"> CSV </v-btn> -->
             </div>
             <v-spacer></v-spacer>
             <div>
@@ -139,10 +131,6 @@
                 Print
                 <v-icon right dark> mdi-printer </v-icon>
               </v-btn>
-              <!-- <v-btn depressed class="mx-2 button" color="#1AC635">
-                Copy
-              </v-btn>
-              <v-btn depressed class="mx-2" color="#A19E9E"> Print </v-btn> -->
               <v-btn
                 small
                 outlined
@@ -156,7 +144,6 @@
             </div>
           </div>
         </div>
-
         <v-spacer></v-spacer>
         <v-text-field
           v-model="search"

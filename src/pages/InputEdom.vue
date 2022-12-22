@@ -33,9 +33,10 @@
             label="Ex. (2021/2022 - Ganjil)"
             outlined
             dense
-            class="mb-0"
+            hide-details
+            solo
           ></v-text-field>
-          <label>Contoh : 2021/2022 - Ganjil</label>
+          <div class="red--text">Contoh : 2021/2022 - Ganjil</div>
         </v-col>
       </v-row>
 
