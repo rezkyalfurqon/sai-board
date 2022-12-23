@@ -13,7 +13,7 @@
             />
           </div>
           <label class="text-center FontTitle" style="color: #b6252a">
-            SAI<span class="FontTitle" style="color: #55565b">-BOARD</span>
+            SURVEY<span class="FontTitle" style="color: #55565b">-BOARD</span>
           </label>
         </div>
       </v-col>
@@ -25,7 +25,7 @@
           <header class="text-center">
             <h1 class="text-center FontHeader">
               HELLO ! WELCOME TO <br />
-              SAI DASHBOARD
+              SURVEY DASHBOARD
             </h1>
             <p class="FontSubHeader">Silahkan Login dengan Akun SSO Anda</p>
           </header>

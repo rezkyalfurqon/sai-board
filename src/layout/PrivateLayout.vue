@@ -10,7 +10,7 @@
       ></v-app-bar-nav-icon>
       <div class="d-flex align-center" @click="directHome">
         <LabelComponent
-          label="SAI-BOARD"
+          label="SURVEY BOARD"
           class="ml-2"
           fontFamily="Germania One"
           fontSize="25px"

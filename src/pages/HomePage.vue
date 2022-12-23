@@ -60,64 +60,11 @@
               </template>
               <v-card>
                 <v-card-title class="primary white--text">
-                  <span class="text-h5"
-                    >Add New Survey SAI - Telkom University</span
-                  >
+                  <span class="text-h5">{{ formTitle }}</span>
                 </v-card-title>
                 <v-card-text>
                   <v-container>
                     <v-row>
-                      <!-- <div class="myFontSubtitle text-h7 text--primary">
-                        Nama Survei<span class="red--text">*</span>
-                      </div>
-                      <v-col cols="12">
-                        <v-text-field
-                          label="Nama Survei"
-                          dense
-                          hide-details
-                          solo
-                        ></v-text-field>
-                        <small class="red--text"
-                          >Contoh : Edom / CSI / Kepuasan Orang Tua</small
-                        >
-                      </v-col>
-                      <div class="myFontSubtitle text-h7 text--primary">
-                        Tahun Survei <span class="red--text">*</span>
-                      </div>
-                      <v-col cols="12">
-                        <v-text-field
-                          label="Tahun"
-                          dense
-                          hide-details
-                          solo
-                        ></v-text-field>
-                        <small class="red--text"
-                          >Contoh : 2021/2022 - Ganjil</small
-                        >
-                      </v-col>
-                      <div class="myFontSubtitle text-h7 text--primary">
-                        Responden <span class="red--text">*</span>
-                      </div>
-                      <v-col cols="12">
-                        <v-select
-                          :items="responden"
-                          label="Solo field"
-                          dense
-                          solo
-                        ></v-select>
-                      </v-col>
-                      <div class="myFontSubtitle text-h7 text--primary">
-                        Link Survei<span class="red--text">*</span>
-                      </div>
-                      <v-col cols="12">
-                        <v-text-field
-                          label="Link Survei"
-                          dense
-                          hide-details
-                          solo
-                        ></v-text-field>
-                      </v-col> -->
-
                       <v-col cols="2">
                         <div class="myFontSubtitle text-h7 text--primary">
                           Nama Survei<span class="red--text">*</span>
@@ -125,14 +72,14 @@
                       </v-col>
                       <v-col cols="10">
                         <v-text-field
+                          v-model="editedItem.namaSurvei"
                           label="Nama Survei"
                           dense
                           hide-details
                           solo
+                          required
                         ></v-text-field>
-                        <small class="red--text"
-                          >Contoh : Edom / CSI / Kepuasan Orang Tua</small
-                        >
+                        <small>Contoh : Edom / CSI / Kepuasan Orang Tua</small>
                       </v-col>
                       <v-col cols="2">
                         <div class="myFontSubtitle text-h7 text--primary">
@@ -141,14 +88,13 @@
                       </v-col>
                       <v-col cols="10">
                         <v-text-field
+                          v-model="editedItem.tahunsurvei"
                           label="Tahun"
                           dense
                           hide-details
                           solo
                         ></v-text-field>
-                        <small class="red--text"
-                          >Contoh : 2021/2022 - Ganjil</small
-                        >
+                        <small>Contoh : 2021/2022 - Ganjil</small>
                       </v-col>
                       <v-col cols="2">
                         <div class="myFontSubtitle text-h7 text--primary">
@@ -157,6 +103,7 @@
                       </v-col>
                       <v-col cols="10">
                         <v-select
+                          v-model="editedItem.responden"
                           :items="responden"
                           label="Responden"
                           dense
@@ -170,53 +117,21 @@
                       </v-col>
                       <v-col cols="10">
                         <v-text-field
+                          v-model="editedItem.linkLaporan"
                           label="Link Survei"
                           dense
                           hide-details
                           solo
                         ></v-text-field>
                       </v-col>
-
-                      <!-- <v-col cols="12">
-                        <div class="black--text ma-0">Nama Survei</div>
-                        <v-text-field
-                          hide-details
-                          label="Nama Survei*"
-                          required
-                          outlined
-                          dense
-                        ></v-text-field>
-                      </v-col>
-                      <v-col cols="12">
-                        <v-text-field
-                          hide-details
-                          label="Tahun Survei*"
-                          required
-                          outlined
-                          dense
-                          solo
-                        ></v-text-field>
-                        <div class="red--text ma-0">
-                          Contoh : 2021/2022 - Ganjil
-                        </div>
-                      </v-col>
-                      <v-col cols="12">
-                        <v-text-field
-                          hide-details
-                          label="Link Survei*"
-                          required
-                          outlined
-                          dense
-                        ></v-text-field>
-                      </v-col> -->
                     </v-row>
                   </v-container>
                   <small class="red--text">*wajib di isi</small>
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="error" @click="dialog = false"> Close </v-btn>
-                  <v-btn color="primary" @click="dialog = false"> Save </v-btn>
+                  <v-btn color="error" @click="close"> Close </v-btn>
+                  <v-btn color="primary" @click="save"> Save </v-btn>
                 </v-card-actions>
               </v-card>
             </v-dialog>
@@ -256,6 +171,9 @@
         </template>
         <template v-slot:[`item.actions`]="{ item }">
           <v-icon small class="mr-2" @click="viewItem(item)"> mdi-eye </v-icon>
+          <v-icon small class="mr-2" @click="editItem(item)">
+            mdi-pencil
+          </v-icon>
           <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
         </template>
       </v-data-table>
@@ -351,26 +269,24 @@ export default {
       dialog: false,
       dialogDelete: false,
       headers: [
-        {
-          text: "No",
-          align: "start",
-          sortable: false,
-          value: "nomor",
-        },
-        { text: "Nama Survei", value: "namaSurvei" },
-        { text: "Actions", value: "actions", sortable: false },
+        { text: "NAMA SURVEI", align: "start", value: "namaSurvei" },
+        { text: "TAHUN SURVEI", value: "tahunsurvei" },
+        { text: "RESPONDEN", value: "responden", sortable: false },
+        { text: "ACTIONS", value: "actions", sortable: false },
       ],
       tableHome: [],
       editedIndex: -1,
       editedItem: {
-        nomor: "",
         namaSurvei: "",
-        linkLaporan: null,
+        tahunsurvei: "",
+        responden: "",
+        linkLaporan: "",
       },
       defaultItem: {
-        nomor: "",
         namaSurvei: "",
-        linkLaporan: null,
+        tahunsurvei: "",
+        responden: "",
+        linkLaporan: "",
       },
       responden: ["Mahasiswa", "Wisudawan", "Pegawai", "Mitra", "Orang Tua"],
     };
@@ -378,7 +294,9 @@ export default {
 
   computed: {
     formTitle() {
-      return this.editedIndex === -1 ? "Input Data" : "Edit Data";
+      return this.editedIndex === -1
+        ? "Add New Survey SAI - Telkom University"
+        : "Edit Survey SAI - Telkom University";
     },
   },
 
@@ -394,71 +312,75 @@ export default {
   created() {
     this.initialize();
   },
-  computed: {
-    formTitle() {
-      return this.editedIndex === -1 ? "Input Data" : "Edit Data";
-    },
-  },
 
   methods: {
     initialize() {
       this.tableHome = [
         {
-          nomor: 1,
-          namaSurvei: "Edom 2021/2022 - Ganjil ",
+          namaSurvei: "Edom",
+          tahunsurvei: "2021/2022 - Ganjil",
+          responden: "mahasiswa",
           linkLaporan:
             "https://telkomuniversityofficial-my.sharepoint.com/:b:/r/personal/sai_365_telkomuniversity_ac_id/Documents/LAPORAN%20LAPORAN%20SAI%20DI%20WEB/SURVEI/EDOM/2021-2022/LAPORAN%20EDOM%20GANJIL%202021%202022.pdf?csf=1&web=1&e=L3x3V1",
         },
         {
-          nomor: 2,
-          namaSurvei: "CSI 2021 - Unit",
+          namaSurvei: "CSI",
+          tahunsurvei: "2021/2022 - Ganjil",
+          responden: "mahasiswa",
           linkLaporan:
             "https://drive.google.com/file/d/1C6752pV3yAmmUGWt_89g_YcoUdRXCmZq/view",
         },
         {
-          nomor: 3,
           namaSurvei: "Kepuasan Orang Tua",
+          tahunsurvei: "2021/2022 - Ganjil",
+          responden: "mahasiswa",
           linkLaporan:
             "https://drive.google.com/file/d/1C6752pV3yAmmUGWt_89g_YcoUdRXCmZq/view",
         },
         {
-          nomor: 4,
           namaSurvei: "Kepuasan Wisudawan",
+          tahunsurvei: "2021/2022 - Ganjil",
+          responden: "mahasiswa",
           linkLaporan:
             "https://drive.google.com/file/d/1C6752pV3yAmmUGWt_89g_YcoUdRXCmZq/view",
         },
         {
-          nomor: 5,
-          namaSurvei: "Kepuasan Mhs Genap 2021/2022",
+          namaSurvei: "Kepuasan Wisudawan",
+          tahunsurvei: "2021/2022 - Genap",
+          responden: "mahasiswa",
           linkLaporan:
             "https://drive.google.com/file/d/1C6752pV3yAmmUGWt_89g_YcoUdRXCmZq/view",
         },
         {
-          nomor: 6,
-          namaSurvei: "Visi Misi - Mahasiswa",
+          namaSurvei: "Visi Misi",
+          tahunsurvei: "2021/2022 - Genap",
+          responden: "mahasiswa",
           linkLaporan:
             "https://drive.google.com/file/d/1C6752pV3yAmmUGWt_89g_YcoUdRXCmZq/view",
         },
         {
-          nomor: 7,
-          namaSurvei: "EDOM Medio Genap 2021/2022",
+          namaSurvei: "EDOM Medio",
+          tahunsurvei: "2021/2022 - Genap",
+          responden: "mahasiswa",
           linkLaporan:
             "https://drive.google.com/file/d/1C6752pV3yAmmUGWt_89g_YcoUdRXCmZq/view",
         },
         {
-          nomor: 8,
-          namaSurvei: "EDOM Genap 2021/2022",
+          namaSurvei: "EDOM",
+          tahunsurvei: "2021/2022 - Genap",
+          responden: "mahasiswa",
           linkLaporan:
             "https://telkomuniversityofficial-my.sharepoint.com/personal/sai_365_telkomuniversity_ac_id/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fsai%5F365%5Ftelkomuniversity%5Fac%5Fid%2FDocuments%2FLAPORAN%20LAPORAN%20SAI%20DI%20WEB%2FSURVEI%2FEDOM%2F2021%2D2022%2FLAPORAN%20EDOM%20GENAP%202021%202022%2Epdf&parent=%2Fpersonal%2Fsai%5F365%5Ftelkomuniversity%5Fac%5Fid%2FDocuments%2FLAPORAN%20LAPORAN%20SAI%20DI%20WEB%2FSURVEI%2FEDOM%2F2021%2D2022&ga=1",
         },
       ];
     },
     viewItem(item) {
-      // this.editedIndex = this.tableHome.indexOf(item);
-      // this.editedItem = Object.assign({}, item);
-      // this.dialog = true;
-
       window.location.href = item.linkLaporan || "";
+    },
+    editItem(item) {
+      this.editedIndex = this.tableHome.indexOf(item);
+      this.editedItem = Object.assign({}, item);
+      this.dialog = true;
     },
 
     deleteItem(item) {
