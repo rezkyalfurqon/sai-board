@@ -170,11 +170,39 @@
           </v-dialog>
         </template>
         <template v-slot:[`item.actions`]="{ item }">
-          <v-icon small class="mr-2" @click="viewItem(item)"> mdi-eye </v-icon>
-          <v-icon small class="mr-2" @click="editItem(item)">
-            mdi-pencil
-          </v-icon>
-          <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
+          <v-btn
+            color="primary"
+            elevation="2"
+            x-small
+            fab
+            icon
+            outlined
+            class="mr-2"
+            @click="viewItem(item)"
+            ><v-icon small color="primary">mdi-eye</v-icon>
+          </v-btn>
+          <v-btn
+            color="success"
+            x-small
+            elevation="2"
+            fab
+            icon
+            outlined
+            class="mr-2"
+            @click="editItem(item)"
+          >
+            <v-icon small color="success">mdi-pencil</v-icon>
+          </v-btn>
+          <v-btn
+            color="red"
+            x-small
+            elevation="2"
+            fab
+            icon
+            outlined
+            @click="deleteItem(item)"
+            ><v-icon small color="red">mdi-delete</v-icon>
+          </v-btn>
         </template>
       </v-data-table>
     </v-card>
@@ -270,9 +298,14 @@ export default {
       dialogDelete: false,
       headers: [
         { text: "NAMA SURVEI", align: "start", value: "namaSurvei" },
-        { text: "TAHUN SURVEI", value: "tahunsurvei" },
-        { text: "RESPONDEN", value: "responden", sortable: false },
-        { text: "ACTIONS", value: "actions", sortable: false },
+        { text: "TAHUN SURVEI", align: "center", value: "tahunsurvei" },
+        {
+          text: "RESPONDEN",
+          align: "center",
+          value: "responden",
+          sortable: false,
+        },
+        { text: "ACTIONS", align: "center", value: "actions", sortable: false },
       ],
       tableHome: [],
       editedIndex: -1,
