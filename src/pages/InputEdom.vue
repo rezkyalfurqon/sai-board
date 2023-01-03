@@ -36,7 +36,7 @@
             hide-details
             solo
           ></v-text-field>
-          <div class="red--text">Contoh : 2021/2022 - Ganjil</div>
+          <small class="black--text">Contoh : 2021/2022 - Ganjil</small>
         </v-col>
       </v-row>
 
@@ -55,7 +55,7 @@
       <v-row>
         <v-col cols="2">
           <div class="myFontSubtitle text-h7 text--primary">
-            Choose File Edom Mata Kuliah
+            File Edom Mata Kuliah
           </div>
         </v-col>
         <v-col cols="3">

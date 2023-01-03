@@ -123,11 +123,11 @@
             </div>
             <v-spacer></v-spacer>
             <div>
-              <v-btn small outlined class="ma-1">
+              <v-btn small outlined class="ma-1" @click.prevent="copy">
                 Copy
                 <v-icon right dark> mdi-content-copy </v-icon>
               </v-btn>
-              <v-btn small outlined class="ma-1">
+              <v-btn small outlined class="ma-1" @click="printWindow()">
                 Print
                 <v-icon right dark> mdi-printer </v-icon>
               </v-btn>
@@ -446,6 +446,28 @@ export default {
       doc.save(`Tabel EDoM.pdf`);
     },
     // GENERATOR PDF
+
+    //GENERATOR PRINT
+    printWindow() {
+      window.print();
+    },
+    //GENERATOR PRINT
+
+    //GENERATOR COPY
+    copy() {
+      const el = document.createElement("textarea");
+
+      el.setAttribute("readonly", "");
+      el.style.position = "absolute";
+      el.style.left = "-9999px";
+      el.value = `${this.tableHome}`;
+      document.body.appendChild(el);
+      el.select();
+
+      document.execCommand("copy");
+      // document.body.removeChild(el);
+    },
+    //GENERATOR COPY
   },
 };
 </script>
