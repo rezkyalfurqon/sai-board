@@ -1,7 +1,7 @@
 <template>
   <div id="container">
     <v-row>
-      <!-- telkon university logo -->
+      <!-- telkom university logo -->
       <v-col md="6" cols="12">
         <div class="d-flex flex-column justify-center">
           <div>
@@ -33,12 +33,13 @@
           <!-- form -->
           <form class="text-center px-10">
             <v-text-field
+              v-model="form.username"
               label="Username"
               prepend-icon="mdi-account"
             ></v-text-field>
 
             <v-text-field
-              v-model="password"
+              v-model="form.password"
               :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
               :type="show1 ? 'text' : 'password'"
               label="Password"
@@ -49,7 +50,7 @@
             <v-btn
               class="FontButton px-8 py-3 my-3 white--text"
               color="#B6252A"
-              @click="directHome"
+              @click="handleLogin"
               >Login</v-btn
             >
           </form>
@@ -61,6 +62,8 @@
   </div>
 </template>
 <script>
+import { HTTP } from "../plugins/axios";
+
 export default {
   name: "Login",
   data() {
@@ -69,13 +72,23 @@ export default {
       show2: true,
       show3: false,
       show4: false,
+      form: { username: null, password: null },
     };
   },
   methods: {
-    directHome() {
-      this.$router.push({
-        path: "/home",
-      });
+    async handleLogin() {
+      try {
+        const http = HTTP("http://localhost:3000/", {
+          "Content-Type": "application/json",
+        });
+        const respons = await http.post("user/login/", this.form);
+        localStorage.token = respons.data.data.token;
+        this.$router.push({
+          path: "/home",
+        });
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };
