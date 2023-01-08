@@ -31,7 +31,7 @@
           </header>
 
           <!-- form -->
-          <form class="text-center px-10">
+          <form class="text-center px-10" @submit.prevent="handleLogin">
             <v-text-field
               v-model="form.username"
               label="Username"
@@ -50,7 +50,8 @@
             <v-btn
               class="FontButton px-8 py-3 my-3 white--text"
               color="#B6252A"
-              @click="handleLogin"
+              type="submit"
+              :loading="loading"
               >Login</v-btn
             >
           </form>
@@ -73,21 +74,26 @@ export default {
       show3: false,
       show4: false,
       form: { username: null, password: null },
+      loading: false,
     };
   },
   methods: {
     async handleLogin() {
+      this.loading = true;
       try {
         const http = HTTP("http://localhost:3000/", {
           "Content-Type": "application/json",
         });
         const respons = await http.post("user/login/", this.form);
         localStorage.token = respons.data.data.token;
+        localStorage.isAdmin = respons.data.data.isAdmin;
         this.$router.push({
           path: "/home",
         });
       } catch (error) {
         console.log(error);
+      } finally {
+        this.loading = false;
       }
     },
   },

@@ -52,7 +52,7 @@
           <div class="mt-2 d-flex">
             <!-- Add Survei -->
             <v-dialog v-model="dialog" persistent max-width="800px">
-              <template v-slot:activator="{ on, attrs }">
+              <template v-if="isAdmin" v-slot:activator="{ on, attrs }">
                 <v-btn color="primary" outlined small v-bind="attrs" v-on="on">
                   NEW SURVEY
                   <v-icon right dark> mdi-plus-circle-outline </v-icon>
@@ -182,6 +182,7 @@
             ><v-icon small color="primary">mdi-eye</v-icon>
           </v-btn>
           <v-btn
+            v-if="isAdmin"
             color="success"
             x-small
             elevation="2"
@@ -194,6 +195,7 @@
             <v-icon small color="success">mdi-pencil</v-icon>
           </v-btn>
           <v-btn
+            v-if="isAdmin"
             color="red"
             x-small
             elevation="2"
@@ -330,6 +332,13 @@ export default {
       return this.editedIndex === -1
         ? "Add New Survey SAI - Telkom University"
         : "Edit Survey SAI - Telkom University";
+    },
+    isAdmin() {
+      if (localStorage.isAdmin === "true") {
+        return true;
+      } else if (localStorage.isAdmin === "false") {
+        return false;
+      }
     },
   },
 

@@ -148,14 +148,22 @@ export default {
       ["Delete", "mdi-delete"],
     ],
   }),
+  created() {
+    if (localStorage.token === undefined) {
+      return this.$router.replace({
+        name: "Login",
+      });
+    }
+  },
   methods: {
     directHome() {
-      this.$router.push({ name: "HomePage" });
+      this.$router.replace({ name: "HomePage" });
     },
     redirect(routeName) {
       this.$router.push({ name: routeName });
     },
     directLogout() {
+      localStorage.clear();
       this.$router.replace({ name: "Login" });
     },
   },
