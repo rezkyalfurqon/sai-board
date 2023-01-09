@@ -132,6 +132,7 @@
                 <v-icon right dark> mdi-printer </v-icon>
               </v-btn>
               <v-btn
+                v-if="isAdmin"
                 small
                 outlined
                 color="primary"
